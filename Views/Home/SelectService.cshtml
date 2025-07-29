@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+
+@{
+    ViewBag.Title = "Select Service";
+    ViewBag.BodyClass = "service-page";
+}
+
+<head>
+    <title>@ViewBag.Title - SwiftMed</title>
+    <link rel="stylesheet" href="~/Content/ServiceStyles.css" />
+    <link rel="stylesheet" href="~/Content/Styles.css" />
+</head>
+
+<body class="@ViewBag.BodyClass">
+
+    <div class="text-center page-heading">
+        <h1>Select your service...</h1>
+        <p>Choose from the available services below to proceed with your booking.</p>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="service-wrapper">
+
+        <div class="box">
+            <img src="~/Images/ServiceTypes/ALS.png" alt="ALS" class="service-img">
+            <span class="title">ALS (Advanced Life Support)</span>
+            <p class="desc">For serious emergencies when your body says, “Call the pros.” Our elite paramedics roll in with equipment that could probably start a hospital.</p>
+            <a href="@Url.Action("Book", "Booking", new { serviceName = "Advanced Life Support" })" class="button">Book Now</a>
+
+        </div>
+
+        <div class="box">
+            <img src="~/Images/ServiceTypes/BLS.png" alt="BLS" class="service-img">
+            <span class="title">BLS (Basic Life Support)</span>
+            <p class="desc">Great for non-critical transport with trained EMTs—because even minor emergencies deserve major professionalism (and maybe a siren or two).</p>
+            <a href="@Url.Action("Book", "Booking", new { serviceName = "Basic Life Support" })" class="button">Book Now</a>
+        </div>
+
+        <div class="box">
+            <img src="~/Images/ServiceTypes/Transport.png" alt="Patient Transport" class="service-img">
+            <span class="title">Patient Transport</span>
+            <p class="desc">Non-emergency rides for checkups, transfers, or “I could walk but let’s not” situations. Comfortable, safe, and absolutely judgment-free.</p>
+            <a href="@Url.Action("Book", "Booking", new { serviceName = "Patient Transport" })" class="button">Book Now</a>
+        </div>
+
+        <div class="box">
+            <img src="~/Images/ServiceTypes/Utility.png" alt="Utility Vehicle" class="service-img">
+            <span class="title">Medical Utility Vehicle</span>
+            <p class="desc">For when you need medical gear and muscle on-site. It’s like bringing a Swiss Army knife to a first aid party.</p>
+            <a href="@Url.Action("Book", "Booking", new { serviceName = "Medical Utility Vehicle" })" class="button">Book Now</a>
+        </div>
+
+        <div class="box">
+            <img src="~/Images/ServiceTypes/Event.png" alt="Event Ambulance" class="service-img">
+            <span class="title">Event Medical Ambulance</span>
+            <p class="desc">Hosting a marathon, music fest, or mosh pit? We’ll be there, ready to patch up twisted ankles and egos—professionally, of course.</p>
+            <a href="@Url.Action("Book", "Booking", new { serviceName = "Event Medical Ambulance" })" class="button">Book Now</a>
+        </div>
+
+        <div class="box">
+            <img src="~/Images/ServiceTypes/Air.png" alt="Air Ambulance" class="service-img">
+            <span class="title">Air Ambulance</span>
+            <p class="desc">When ground just won’t cut it. For high-speed, high-altitude medical transport—because some patients fly better than others.</p>
+            <a href="@Url.Action("Book", "Booking", new { serviceName = "Air Ambulance" })" class="button">Book Now</a>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

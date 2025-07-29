@@ -1,0 +1,47 @@
+﻿@model List<u24637646_HW01.Models.Booking>
+
+@{
+    ViewBag.Title = "Ride History";
+    ViewBag.BodyClass = "booking-page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/BookingStyles.css" />
+</head>
+
+<body class="@ViewBag.BodyClass">
+
+    <div class="booking-wrapper">
+        <div class="booking-container">
+            <h2>Your Ride History</h2>
+
+            @if (Model == null || Model.Count == 0)
+            {
+                <p>You haven't made any bookings yet.</p>
+            }
+            else
+            {
+                foreach (var booking in Model.OrderByDescending(b => b.BookingDate))
+                {
+                    var sosClass = booking.IsSOS ? "border-danger" : "border-success";
+                    <div class="booking-item @sosClass" style="cursor: pointer;"
+                         onclick="location.href='@Url.Action("Confirmation", "Booking", new { id = booking.BookingId })'">
+                        <h4 style="color: var(--accent-gold); font-weight: 600;">
+                            @booking.BookingDate.ToString("dd MMM yyyy")
+                        </h4>
+                        <p><strong>Booking ID:</strong> @booking.BookingId</p>
+                        <p><strong>Driver:</strong> @(booking.Driver != null ? $"{booking.Driver.FirstName} {booking.Driver.LastName}" : "No driver assigned")</p>
+                        <p><strong>Ambulance Type:</strong> @booking.ServiceType</p>
+                        <p><strong>Address:</strong> @booking.Address</p>
+
+                        @if (booking.IsSOS)
+                        {
+                            <span class="sos-highlight">🚨 S.O.S. Booking</span>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</body>

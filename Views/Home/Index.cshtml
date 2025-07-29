@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Home";
+    ViewBag.BodyClass = "home-page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - SwiftMed</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/HomeStyles.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Styles.css")" />
+</head>
+
+<body class="@ViewBag.BodyClass">
+
+    <section class="emergency-highlight">
+        <div class="emergency-container">
+            <div class="emergency-card">
+                <div class="emergency-info">
+                    <h2>Emergency?</h2>
+                    <p>
+                        If you’re genuinely in a medical pickle, go ahead and smash that big green button. <br />
+                        (Just don’t press it because your cat sneezed weird, okay?)
+                    </p>
+                </div>
+                <div class="sos-action">
+                    <a href="@Url.Action("Emergency", "Home")" class="sos-pulse-button">S.O.S</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider-line"></div>
+
+    <section class="features">
+        <div class="feature-card">
+            <img src="@Url.Content("~/Images/HomePage/Fast.png")" alt="Fast" />
+            <h3>Rapid Response</h3>
+            <p>
+                Our dispatch system and on-call units are designed to respond quickly in times of urgent medical need—because seconds matter.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <img src="@Url.Content("~/Images/HomePage/Staff.png")" alt="Staff" />
+            <h3>Qualified Medical Personnel</h3>
+            <p>
+                Each member of our team is certified, trained, and experienced in pre-hospital care to ensure your safety from the moment we arrive.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <img src="@Url.Content("~/Images/HomePage/Tools.png")" alt="Tools" />
+            <h3>Modern, Life-Saving Equipment</h3>
+            <p>
+                From defibrillators to advanced life support monitors, our ambulances are equipped to stabilize and treat patients en route to care.
+            </p>
+        </div>
+    </section>
+
+    <div class="divider-line"></div>
+
+    <section class="book">
+        <div class="book-left">
+            <h1>We’re moderately trained to save your life</h1>
+            <p>
+                Our ambulances are fast, our staff is charming, and our GPS usually works.
+                Need help? Let’s get this show on the road.
+            </p>
+            <a href="@Url.Action("SelectService", "Home")" class="button">Book a Ride</a>
+        </div>
+        <div class="book-right">
+            <img src="@Url.Content("~/Images/HomePage/Ambulance.jpg")" alt="Ambulance Icon" class="book-img" />
+        </div>
+    </section>
+
+</body>
+</html>

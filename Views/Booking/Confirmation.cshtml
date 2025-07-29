@@ -1,0 +1,64 @@
+﻿@model u24637646_HW01.Models.Booking
+
+@{
+    ViewBag.Title = "Booking Confirmation";
+    ViewBag.BodyClass = "booking-page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/Styles.css" />
+    <link rel="stylesheet" href="~/Content/BookingStyles.css" />
+</head>
+
+<body class="@ViewBag.BodyClass">
+    <div class="booking-wrapper">
+        <div class="booking-container">
+
+            <div class="text-center mb-4">
+                <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Success" width="80" />
+                <h2>Booking Confirmed</h2>
+            </div>
+
+            <div class="mb-4">
+                <label>Booking Info</label>
+                <div class="form-control">
+                    <p><strong>Booking ID:</strong> @Model.BookingId</p>
+                    <p><strong>Date Booked:</strong> @Model.BookingDate.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p><strong>Pick-Up Time:</strong> @Model.PickUpTime.ToString("HH:mm")</p>
+                    <p><strong>Pick-Up Address:</strong> @Model.Address</p>
+                    <p><strong>Service Type:</strong> @Model.ServiceType</p>
+                </div>
+            </div>
+
+            <div class="mb-4 text-center">
+                <label>Driver Info</label>
+                <div class="form-control">
+                    <img src="@Url.Content(Model.Driver?.ImgUrl)" alt="Driver Image" class="img-fluid img-rounded-circle mb-2" width="100" />
+                    <p><strong>Name:</strong> @Model.Driver.FirstName @Model.Driver.LastName</p>
+                    <p><strong>Phone:</strong> @Model.Driver.PhoneNumber</p>
+                </div>
+            </div>
+
+            <div class="mb-4 text-center">
+                <label>Ambulance Info</label>
+                <div class="form-control">
+                    <img src="@Url.Content(Model.Vehicle?.ImgUrl)" alt="Vehicle" class="img-fluid mb-2" width="100" />
+                    <p><strong>Registration:</strong> @Model.Vehicle.RegistrationNumber</p>
+                    <p><strong>Service Type:</strong> @Model.Vehicle.ServiceType</p>
+                </div>
+            </div>
+
+            @if (Model.IsSOS)
+            {
+                <div class="popup-overlay" id="sos-alert">
+                    <div class="popup-content">
+                        <button class="popup-close" onclick="document.getElementById('sos-alert').style.display='none'">&times;</button>
+                        <br />
+                        <p>This was an <strong>S.O.S.</strong> Emergency Booking</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>

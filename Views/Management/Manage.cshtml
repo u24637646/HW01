@@ -1,0 +1,139 @@
+﻿@model u24637646_HW01.Models.ManagementViewModel
+
+@{
+    ViewBag.Title = "Driver and Vehicle Management";
+    ViewBag.BodyClass = "management-page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/ManagementStyles.css" />
+</head>
+
+<body class="@ViewBag.BodyClass">
+    <div class="management-section">
+
+        <h2>@ViewBag.Title</h2>
+
+        <form method="get" action="@Url.Action("Manage", "Management")" class="mb-4">
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="searchFirstName">Driver Name</label>
+                    <input type="text" class="form-control" id="searchFirstName" name="searchFirstName"
+                           value="@Model.SearchFirstName" placeholder="Enter first name" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="searchServiceType">Service</label>
+                    @Html.DropDownList("searchServiceType", Model.AllServices, "-- All Services --",
+                        new { @class = "form-control", id = "searchServiceType" })
+                </div>
+                <div class="form-group col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-info me-2">Search</button>
+                    <a href="@Url.Action("Manage", "Management")" class="btn btn-info">Reset</a>
+                </div>
+            </div>
+        </form>
+
+        <div class="table-wrapper">
+            <h3>Drivers</h3>
+            <table class="management-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Full Name</th>
+                        <th>Phone</th>
+                        <th>Service</th>
+                        <th>Gender</th>
+                        <th>Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var driver in Model.Drivers)
+                    {
+                        <tr>
+                            <td><img src="@Url.Content(driver.ImgUrl)" alt="Driver Image" /></td>
+                            <td>@driver.FirstName @driver.LastName</td>
+                            <td>@driver.PhoneNumber</td>
+                            <td>@driver.ServiceType</td>
+                            <td>@driver.Gender</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" onclick="openDriverForm(@driver.DriverId)">Update</button>
+                                <a href="@Url.Action("DeleteDriver", "Management", new { driverId = driver.DriverId })"
+                                   class="btn btn-danger btn-sm" onclick="return confirm('Delete this driver?');">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button class="btn btn-success mt-3" onclick="openDriverForm()">Add Driver</button>
+        </div>
+
+        <div class="table-wrapper">
+            <h3>Vehicles</h3>
+            <table class="management-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Registration</th>
+                        <th>Service</th>
+                        <th>Controls</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var vehicle in Model.Vehicles)
+                    {
+                        <tr>
+                            <td><img src="@Url.Content(vehicle.ImgUrl)" alt="Vehicle Image" /></td>
+                            <td>@vehicle.RegistrationNumber</td>
+                            <td>@vehicle.ServiceType</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" onclick="openVehicleForm(@vehicle.VehicleId)">Update</button>
+                                <a href="@Url.Action("DeleteVehicle", "Management", new { id = vehicle.VehicleId })"
+                                   class="btn btn-danger btn-sm" onclick="return confirm('Delete this vehicle?');">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="vehicle-actions d-flex align-items-center gap-3 mt-3">
+                <button class="btn btn-success" onclick="openVehicleForm()">Add Vehicle</button>
+
+                <form method="post" action="@Url.Action("ExportVehicles", "Management")" class="m-0">
+                    <button type="submit" class="btn btn-info">Export Vehicles</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="modalContent">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function openDriverForm(id) {
+            var url = '@Url.Action("DriverForm", "Management")';
+            if (id) url += '?id=' + id;
+            $.get(url, function (data) {
+                $('#modalContent').html(data);
+                new bootstrap.Modal(document.getElementById('modalForm')).show();
+            });
+        }
+
+        function openVehicleForm(id) {
+            var url = '@Url.Action("VehicleForm", "Management")';
+            if (id) url += '?id=' + id;
+            $.get(url, function (data) {
+                $('#modalContent').html(data);
+                new bootstrap.Modal(document.getElementById('modalForm')).show();
+            });
+        }
+    </script>
+</body>

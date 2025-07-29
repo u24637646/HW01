@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SwiftMed</title>
+
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="@Url.Content("~/Content/Styles.css")" />
+
+</head>
+
+<body class="@ViewBag.BodyClass">
+    <nav class="navbar navbar-expand-sm navbar-dark navbar-primary-green">
+        <div class="container d-flex align-items-center">
+
+            <a class="navbar-brand d-flex align-items-center" href="@Url.Action("Index", "Home")">
+                <img src="~/Images/HomePage/SwiftMed_Logo.png" class="rounded-circle me-2" alt="SwiftMed Logo" />
+                <div class="brand-text">
+                    <span class="navbar-title">SwiftMed</span>
+                    <small class="navbar-slogan">Because crawling to the ER isn't a good look.</small>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav align-items-center">
+
+                    <li class="nav-item me-3">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item me-3">
+                        @Html.ActionLink("Ride History", "RideHistory", "Booking", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item me-3">
+                        @Html.ActionLink("Manage", "Manage", "Management", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        <a href="javascript:history.back()" class="nav-link">(Previous Page)</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Xario Zeekoei - Homework Assignment 01</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

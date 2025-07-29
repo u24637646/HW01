@@ -1,0 +1,32 @@
+﻿@model u24637646_HW01.Models.VehicleFormModel
+
+<head>
+    <link rel="stylesheet" href="~/Content/managementstyles.css" />
+</head>
+
+<div class="modal-header">
+    <h5 class="modal-title">@((Model.VehicleId == 0) ? "Add Vehicle" : "Edit Vehicle")</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<div class="modal-body">
+    @using (Html.BeginForm("SaveVehicle", "Management", FormMethod.Post, new { id = "vehicleForm" }))
+    {
+        @Html.HiddenFor(m => m.VehicleId)
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.RegistrationNumber, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control", required = "required" })
+        </div>
+
+        <div class="form-group mb-4">
+            @Html.LabelFor(m => m.ServiceType, new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.ServiceType, new SelectList(ViewBag.Services, "Value", "Text", Model.ServiceType), "-- Select --", new { @class = "form-control" })
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+    }
+</div>

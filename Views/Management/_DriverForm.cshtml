@@ -1,0 +1,47 @@
+﻿@model u24637646_HW01.Models.DriverFormModel
+
+<head>
+    <link rel="stylesheet" href="~/Content/managementstyles.css" />
+</head>
+
+<div class="modal-header">
+    <h5 class="modal-title">@((Model.DriverId == 0) ? "Add Driver" : "Edit Driver")</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+
+<div class="modal-body">
+    @using (Html.BeginForm(Model.DriverId == 0 ? "CreateDriver" : "EditDriver", "Management", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.DriverId)
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", required = "required" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", required = "required" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", required = "required" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.ServiceType, new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.ServiceType, new SelectList(ViewBag.Services, "Value", "Text", Model.ServiceType), "-- Select --", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group mb-4">
+            @Html.LabelFor(m => m.Gender, new { @class = "form-label" })
+            @Html.EnumDropDownListFor(m => m.Gender, new { @class = "form-control" })
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+    }
+</div>
