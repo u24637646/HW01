@@ -1,0 +1,269 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* Root variables for colors */
+:root {
+    --primary-green: #81C784;
+    --accent-gold: #BFA06A;
+    --dark-bg: #2E2E2E;
+    --light-text: #FFFFFF;
+}
+
+/* Body styling for booking page */
+body.booking-page {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Flex container to center content */
+.booking-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 4rem 2rem;
+}
+
+/* Container box styling */
+.booking-container {
+    background-color: rgba(46, 46, 46, 0.85);
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
+    color: var(--light-text);
+}
+
+/* Headings style */
+h2, h3 {
+    font-family: 'Lora', serif;
+    color: var(--accent-gold);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Style for form labels */
+label {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-family: 'Lora', serif;
+    color: var(--accent-gold);
+}
+
+/* Common form control styles */
+.form-control {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    border: 1px solid #666;
+    background-color: #3a3a3a;
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+    /* Placeholder text color */
+    .form-control::placeholder {
+        color: #bfbfbf;
+    }
+
+    /* Focus state for form controls */
+    .form-control:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+        background-color: #424242;
+        color: var(--light-text);
+        box-shadow: none;
+    }
+
+/* Allow vertical resize only on textareas */
+textarea.form-control {
+    resize: vertical;
+}
+
+/* Paragraph text color */
+.booking-container p,
+.booking-container p strong {
+    color: #FFFFFF;
+}
+
+/* Booking history item styling */
+.booking-item {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    background-color: #3a3a3a;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+    /* Green border for success items */
+    .booking-item.border-success {
+        border-color: #4CAF50;
+    }
+
+    /* Red border for danger items */
+    .booking-item.border-danger {
+        border-color: #f44336;
+    }
+
+    /* Hover effect for booking items */
+    .booking-item:hover {
+        box-shadow: 0 0 20px 4px rgba(191, 160, 106, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transform: translateY(-6px);
+    }
+
+/* Highlight style for SOS text */
+.sos-highlight {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* Button style for booking button */
+.btn-book {
+    cursor: pointer;
+    position: relative;
+    padding: 10px 24px;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
+    border-radius: 34px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    margin: 2.5rem auto 0 auto;
+    text-align: center;
+    box-shadow: none;
+}
+
+    /* Animated background effect for button before hover */
+    .btn-book::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        border-radius: inherit;
+        scale: 0;
+        z-index: -1;
+        background-color: var(--accent-gold);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    /* Hover background expands */
+    .btn-book:hover::before {
+        scale: 6;
+    }
+
+    /* Hover state for button */
+    .btn-book:hover {
+        color: #F5F5F5;
+        scale: 1.1;
+        box-shadow: 0 0 20px rgba(191, 160, 106, 0.4);
+    }
+
+    /* Active state for button */
+    .btn-book:active {
+        scale: 1;
+    }
+
+/* Responsive image styling */
+.booking-container img.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Circular images for drivers */
+.img-rounded-circle {
+    border-radius: 50%;
+}
+
+/* Popup overlay background */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: popupFadeIn 0.5s ease forwards;
+}
+
+/* Popup content container styling */
+.popup-content {
+    background-color: rgba(191, 160, 106, 0.9);
+    border: 2px solid var(--accent-gold);
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(191, 160, 106, 0.8);
+    max-width: 400px;
+    width: 90%;
+    color: #fff;
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+}
+
+/* Close button inside popup */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Fade-in animation keyframes */
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive padding for smaller screens */
+@media (max-width: 576px) {
+    .booking-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    /* Adjust button size for small screens */
+    .btn-book {
+        max-width: 100%;
+        padding: 0.75rem;
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,18 @@
+ALS-101, Advanced Life Support
+ALS-102, Advanced Life Support
+ALS-103, Advanced Life Support
+BLS-201, Basic Life Support
+BLS-202, Basic Life Support
+BLS-203, Basic Life Support
+AIR-301, Air Ambulance
+AIR-302, Air Ambulance
+AIR-303, Air Ambulance
+PT-201, Patient Transport
+PT-202, Patient Transport
+PT-203, Patient Transport
+UTIL-401, Medical Utility Vehicle
+UTIL-402, Medical Utility Vehicle
+UTIL-403, Medical Utility Vehicle
+EVENT-501, Event Medical Ambulance
+EVENT-502, Event Medical Ambulance
+EVENT-503, Event Medical Ambulance
